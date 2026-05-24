@@ -1,9 +1,9 @@
-package com.levanthem.supperApp.entity.unimany;
+package com.levanthem.supperApp.entity.bidirectional;
 
 import jakarta.persistence.*;
 
-//@Entity
-//@Table(name = "Student")
+@Entity
+@Table(name = "Student")
 public class Student {
     @Id
     @Column(name = "Id", columnDefinition = "CHAR(8)") // ko nhap se ra VARCHAR(255)
@@ -15,18 +15,10 @@ public class Student {
     @Column(name = "Gpa")
     private double gpa;
 
-    //private String MajorId ; anw don OOP ko lam vay.
-
-
-    // nghi tu duy theo csdl la ko dung,
-    //nghi dung tu duy OOP, cac object co moi quan he
-    // co cach de convert tu OOP thanh Table /FK , Join column --> ORM mapping
-    // can 1 thang giuyp anh xa 2 the gioi de cho tuong thich : JPA/HIBERNATE
+    // sv thuoc 1 chuyen nganh tai 1 toi diem
     @ManyToOne
-    @JoinColumn(name = "MajorId")
-    private Major major;  //(nhieu sang 1)
-
-    // set sv thuoc major nao
+    @JoinColumn(name = "MajorId")  // bderect chuyen joincolum ve N cho chuan
+    private Major major;
 
 
     public Major getMajor() {
@@ -81,11 +73,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", yob=" + yob +
-                ", gpa=" + gpa +
-                '}';
+        // lam cho dep trai
+        return String.format("|%8s|%-40s|%4d|%4.1f|",id,name,yob,gpa);
+//        return "Student{" +
+//                "id='" + id + '\'' +
+//                ", name='" + name + '\'' +
+//                ", yob=" + yob +
+//                ", gpa=" + gpa +
+//                '}';
     }
 }

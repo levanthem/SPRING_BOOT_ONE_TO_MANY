@@ -8,15 +8,15 @@ import jakarta.persistence.Table;
 
 import javax.xml.namespace.QName;
 
-@Entity
-@Table(name = "Major")
+//Entity
+//@Table(name = "Major")
 public class Major {
 
     @Id
     @Column(name = "Id",columnDefinition = "CHAR(2)")
 
     private String id;
-    @Column(name = "Name", columnDefinition = "NVARCHAR(100", length = 100, nullable = false)
+    @Column(name = "Name", columnDefinition = "NVARCHAR(100)", length = 100, nullable = false)
     private String name;
 
     public Major() {
